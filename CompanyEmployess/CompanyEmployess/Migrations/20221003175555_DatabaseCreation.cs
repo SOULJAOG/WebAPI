@@ -5,10 +5,24 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompanyEmployess.Migrations
 {
-    public partial class DataBaseInitial : Migration
+    public partial class DatabaseCreation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Cat",
+                columns: table => new
+                {
+                    CompanyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
+                    Gender = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
+                    Couple = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cat", x => x.CompanyId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Companies",
                 columns: table => new
@@ -24,27 +38,17 @@ namespace CompanyEmployess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Orders",
+                name: "Dog",
                 columns: table => new
                 {
-                    CarId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    car_Name = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false)
+                    CompanyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
+                    Gender = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
+                    Couple = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.CarId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Product",
-                columns: table => new
-                {
-                    PetId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    pet_Name = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Product", x => x.PetId);
+                    table.PrimaryKey("PK_Dog", x => x.CompanyId);
                 });
 
             migrationBuilder.CreateTable(
@@ -102,13 +106,13 @@ namespace CompanyEmployess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Cat");
+
+            migrationBuilder.DropTable(
+                name: "Dog");
+
+            migrationBuilder.DropTable(
                 name: "Employees");
-
-            migrationBuilder.DropTable(
-                name: "Orders");
-
-            migrationBuilder.DropTable(
-                name: "Product");
 
             migrationBuilder.DropTable(
                 name: "Companies");

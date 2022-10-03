@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
-    public class Company
+    public class Dog
     {
         [Column("CompanyId")]
         public Guid Id { get; set; }
@@ -17,8 +17,7 @@ namespace Entities.Models
         public string Name { get; set; }
         [Required(ErrorMessage = "Company address is a required field.")]
         [MaxLength(60, ErrorMessage = "Maximum length for rhe Address is 60 characte")]
-        public string Address { get; set; }
-        public string Country { get; set; }
-        public ICollection<Employees> Employees { get; set; }
+        public string Gender { get; set; }
+        public string Couple { get; set; }
     }
 }

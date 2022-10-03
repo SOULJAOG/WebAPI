@@ -23,11 +23,11 @@ namespace Entities
         }
 
         public DbSet<Company> Companies { get; set; }
-        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Employees> Employees { get; set; }
 
-        public DbSet<Car>  Orders { get; set; }
+        public DbSet<Cat> Cat { get; set; }
 
-        public DbSet<Pet> Product { get; set; }
+        public DbSet<Dog> Dog { get; set; }
 
     }
 }

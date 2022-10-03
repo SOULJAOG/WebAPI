@@ -13,10 +13,14 @@ namespace Repository
         private RepositoryContext _repositoryContext;
         private ICompanyRepository _companyRepository;
         private IEmployeeRepository _employeeRepository;
+        private ICatRepository _catRepository;
+        private IDogRepository _dogRepository;
+
         public RepositoryManager(RepositoryContext repositoryContext)
         {
             _repositoryContext = repositoryContext;
         }
+
         public ICompanyRepository Company
         {
             get
@@ -26,6 +30,7 @@ namespace Repository
                 return _companyRepository;
             }
         }
+
         public IEmployeeRepository Employee
         {
             get
@@ -35,6 +40,27 @@ namespace Repository
                 return _employeeRepository;
             }
         }
+
+        public ICatRepository Cat
+        {
+            get
+            {
+                if (_catRepository == null)
+                    _catRepository = new CatRepository(_repositoryContext);
+                return _catRepository;
+            }
+        }
+
+        public IDogRepository Dog
+        {
+            get
+            {
+                if (_dogRepository == null)
+                    _dogRepository = new DogRepository(_repositoryContext);
+                return _dogRepository;
+            }
+        }
+
         public void Save() => _repositoryContext.SaveChanges();
     }
 }
