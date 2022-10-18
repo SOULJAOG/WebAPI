@@ -13,8 +13,9 @@ namespace Repository
         private RepositoryContext _repositoryContext;
         private ICompanyRepository _companyRepository;
         private IEmployeeRepository _employeeRepository;
-        private ICatRepository _catRepository;
-        private IDogRepository _dogRepository;
+        private IUserRepository _userRepository;
+        private IOrderRepository _orderRepository;
+        private IContentOfOrderRepository _contentOfOrderRepository;
 
         public RepositoryManager(RepositoryContext repositoryContext)
         {
@@ -41,23 +42,33 @@ namespace Repository
             }
         }
 
-        public ICatRepository Cat
+        public IUserRepository User
         {
             get
             {
-                if (_catRepository == null)
-                    _catRepository = new CatRepository(_repositoryContext);
-                return _catRepository;
+                if (_userRepository == null)
+                    _userRepository = new UserRepository(_repositoryContext);
+                return _userRepository;
             }
         }
 
-        public IDogRepository Dog
+        public IOrderRepository Order
         {
             get
             {
-                if (_dogRepository == null)
-                    _dogRepository = new DogRepository(_repositoryContext);
-                return _dogRepository;
+                if (_orderRepository == null)
+                    _orderRepository = new OrderRepository(_repositoryContext);
+                return _orderRepository;
+            }
+        }
+
+        public IContentOfOrderRepository ContentOfOrder
+        {
+            get
+            {
+                if (_contentOfOrderRepository == null)
+                    _contentOfOrderRepository = new ContentOfOrderRepository(_repositoryContext);
+                return _contentOfOrderRepository;
             }
         }
 

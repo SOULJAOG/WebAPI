@@ -9,32 +9,26 @@ using System.Threading.Tasks;
 
 namespace Entities.Configuration
 {
-    public class DogConfiguration : IEntityTypeConfiguration<Dog>
+    public class UserConfiguration : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<Dog> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.HasData
             (
-            new Dog
+            new User
             {
                 Id = new Guid("80abbca8-664d-4b20-b5de-024715497d4a"),
-                Name = "Raiden",
-                Gender = "Male",
-                Couple = "German Shepherd",
+                Mail = "nick@gmail.com",
             },
-            new Dog
+            new User
             {
                 Id = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"),
-                Name = "McLeaf",
-                Gender = "Female",
-                Couple = "Poodle",
+                Mail = "tim@gmail.com",
             },
-            new Dog
+            new User
             {
                 Id = new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811"),
-                Name = "Miller",
-                Gender = "Male",
-                Couple = "German Shepherd",
+                Mail = "oneill@gmail.com",
             });
         }
     }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class CatRepository : RepositoryBase<Cat>, Contracts.ICatRepository
+    public class OrderRepository : RepositoryBase<Order>, Contracts.IOrderRepository
     {
-        public CatRepository(RepositoryContext repositoryContext)
+        public OrderRepository(RepositoryContext repositoryContext)
         : base(repositoryContext)
         {
         }

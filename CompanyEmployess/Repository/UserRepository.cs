@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class DogRepository : RepositoryBase<Dog>, Contracts.IDogRepository
+    public class UserRepository : RepositoryBase<User>, Contracts.IUserRepository
     {
-        public DogRepository(RepositoryContext repositoryContext)
+        public UserRepository(RepositoryContext repositoryContext)
         : base(repositoryContext)
         {
         }
