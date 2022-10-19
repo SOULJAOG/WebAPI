@@ -20,14 +20,18 @@ namespace Entities
         {
             modelBuilder.ApplyConfiguration(new CompanyConfiguration());
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderConfiguration());
+            modelBuilder.ApplyConfiguration(new ContentOfOrderConfiguration());
         }
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<Employees> Employees { get; set; }
 
-        public DbSet<Cat> Cat { get; set; }
+        public DbSet<User> User { get; set; }
 
-        public DbSet<Dog> Dog { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<ContentOfOrder> ContentOfOrder { get; set; }
 
     }
 }

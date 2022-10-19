@@ -10,8 +10,14 @@ namespace Contracts
     {
         ICompanyRepository Company { get; }
         IEmployeeRepository Employee { get; }
+<<<<<<< HEAD
+        IUserRepository User { get; }
+        IOrderRepository Order { get; }
+        IContentOfOrderRepository ContentOfOrder { get; }
+=======
         ICatRepository Cat { get; }
         IDogRepository Dog { get; }
+>>>>>>> aef9d58cbf25c431223056766df7d4e832365b72
         void Save();
     }
 }
