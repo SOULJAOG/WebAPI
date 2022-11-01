@@ -35,7 +35,16 @@ namespace CompanyEmployess
             services.ConfigureSqlContext(Configuration);
             services.AddControllers();
             services.AddAutoMapper(typeof(Startup));
+<<<<<<< HEAD
         }
+=======
+            services.AddControllers(config => {
+                config.RespectBrowserAcceptHeader = true;
+                config.ReturnHttpNotAcceptable = true;
+            }).AddXmlDataContractSerializerFormatters().AddCustomCSVFormatter();
+        }
+    
+>>>>>>> lab4
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerManager logger)
@@ -68,7 +77,11 @@ namespace CompanyEmployess
                 CreateMap<Company, CompanyDto>()
                 .ForMember(c => c.FullAddress,
                 opt => opt.MapFrom(x => string.Join(' ', x.Address, x.Country)));
+<<<<<<< HEAD
 
+=======
+                CreateMap<Employees, EmployeeDto>();
+>>>>>>> lab4
                 CreateMap<Order, OrderDto>();
                 CreateMap<ContentOfOrder, ContentOfOrderDto>();
             }

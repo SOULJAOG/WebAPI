@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 ﻿using Contracts;
+=======
+﻿using CompanyEmployees;
+using Contracts;
+>>>>>>> lab4
 using Entities;
 using LoggerService;
 using Microsoft.AspNetCore.Builder;
@@ -37,5 +42,11 @@ namespace CompanyEmployess.Extensions
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
         services.AddScoped<IRepositoryManager, RepositoryManager>();
+<<<<<<< HEAD
+=======
+
+        public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) =>
+         builder.AddMvcOptions(config => config.OutputFormatters.Add(new CsvOutputFormatter()));
+>>>>>>> lab4
     }
 }

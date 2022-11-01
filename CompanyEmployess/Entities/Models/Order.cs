@@ -12,7 +12,11 @@ namespace Entities.Models
     {
         [Column("OrderId")]
         public Guid Id { get; set; }
+<<<<<<< HEAD
   
+=======
+       
+>>>>>>> lab4
         public string CustomerName { get; set; }
         public string Phone { get; set; }
         public DateTime DateOfDelivery { get; set; }

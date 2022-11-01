@@ -15,7 +15,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+<<<<<<< HEAD
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+=======
+>>>>>>> lab4
   </ItemGroup>
 
   <ItemGroup>

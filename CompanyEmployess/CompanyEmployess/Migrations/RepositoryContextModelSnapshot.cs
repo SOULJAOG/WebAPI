@@ -201,6 +201,12 @@ namespace CompanyEmployess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+<<<<<<< HEAD
+=======
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+>>>>>>> lab4
                     b.HasKey("Id");
 
                     b.ToTable("Order");
@@ -212,7 +218,12 @@ namespace CompanyEmployess.Migrations
                             CustomerName = "Raiden",
                             DateOfDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfIssue = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+<<<<<<< HEAD
                             Phone = "89278976365"
+=======
+                            Phone = "89278976365",
+                            UserId = new Guid("80abbca8-664d-4b20-b5de-024715497d4a")
+>>>>>>> lab4
                         },
                         new
                         {
@@ -220,7 +231,12 @@ namespace CompanyEmployess.Migrations
                             CustomerName = "Miller",
                             DateOfDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfIssue = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+<<<<<<< HEAD
                             Phone = "89278876365"
+=======
+                            Phone = "89278876365",
+                            UserId = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a")
+>>>>>>> lab4
                         },
                         new
                         {
@@ -228,7 +244,48 @@ namespace CompanyEmployess.Migrations
                             CustomerName = "Nill",
                             DateOfDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfIssue = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+<<<<<<< HEAD
                             Phone = "89278876345"
+=======
+                            Phone = "89278876345",
+                            UserId = new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811")
+                        });
+                });
+
+            modelBuilder.Entity("Entities.Models.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("UserId");
+
+                    b.Property<string>("Mail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("80abbca8-664d-4b20-b5de-024715497d4a"),
+                            Mail = "nick@gmail.com"
+                        },
+                        new
+                        {
+                            Id = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"),
+                            Mail = "tim@gmail.com"
+                        },
+                        new
+                        {
+                            Id = new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811"),
+                            Mail = "oneill@gmail.com"
+>>>>>>> lab4
                         });
                 });
 
