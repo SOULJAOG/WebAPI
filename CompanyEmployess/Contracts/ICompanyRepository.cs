@@ -11,12 +11,15 @@ namespace Contracts
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
        
 >>>>>>> lab4
         IEnumerable<Company> GetAllCompanies(bool trackChanges);
         Company GetCompany(Guid companyId, bool trackChanges);
 =======
+=======
+>>>>>>> lab6
        
         IEnumerable<Company> GetAllCompanies(bool trackChanges);
         Company GetCompany(Guid companyId, bool trackChanges);
@@ -24,7 +27,11 @@ namespace Contracts
         void CreateCompany(Company company);
 
         IEnumerable<Company> GetByIds(IEnumerable<Guid> ids, bool trackChanges);
+<<<<<<< HEAD
 
 >>>>>>> lab5
+=======
+        void DeleteCompany(Company company);
+>>>>>>> lab6
     }
 }

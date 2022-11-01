@@ -16,10 +16,16 @@ namespace Entities.DataTransferObjects
         public DateTime DateOfDelivery { get; set; }
         public DateTime DateOfIssue { get; set; }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
         public IEnumerable<ContentOfOrderForCreationDto> ContentOfOrder { get; set; }
 
 >>>>>>> lab5
+=======
+
+        public IEnumerable<ContentOfOrderForCreationDto> ContentOfOrder { get; set; }
+
+>>>>>>> lab6
     }
 }

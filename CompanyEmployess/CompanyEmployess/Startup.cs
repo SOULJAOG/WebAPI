@@ -13,6 +13,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NLog;
 using System.IO;
+<<<<<<< HEAD
+=======
+using Newtonsoft;
+>>>>>>> lab6
 
 namespace CompanyEmployess
 {
@@ -37,6 +41,7 @@ namespace CompanyEmployess
             services.AddAutoMapper(typeof(Startup));
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         }
 =======
 =======
@@ -51,6 +56,14 @@ namespace CompanyEmployess
 >>>>>>> lab4
 =======
 >>>>>>> lab5
+=======
+            services.AddControllers(config => {
+                config.RespectBrowserAcceptHeader = true;
+                config.ReturnHttpNotAcceptable = true;
+            }).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters().AddCustomCSVFormatter();
+        }
+    
+>>>>>>> lab6
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerManager logger)
@@ -85,6 +98,7 @@ namespace CompanyEmployess
                 opt => opt.MapFrom(x => string.Join(' ', x.Address, x.Country)));
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
                 CreateMap<Employees, EmployeeDto>();
@@ -92,13 +106,26 @@ namespace CompanyEmployess
                 CreateMap<Order, OrderDto>();
                 CreateMap<ContentOfOrder, ContentOfOrderDto>();
 =======
+=======
+>>>>>>> lab6
                 CreateMap<Employees, EmployeeDto>();
                 CreateMap<Order, OrderDto>();
                 CreateMap<ContentOfOrder, ContentOfOrderDto>();
                 CreateMap<CompanyForCreationDto, Company>();
                 CreateMap<ContentOfOrderForCreationDto, ContentOfOrder>();
                 CreateMap<OrderForCreationDto, Order>();
+<<<<<<< HEAD
 >>>>>>> lab5
+=======
+                CreateMap<EmployeeForUpdateDto, Employees>();
+                CreateMap<CompanyForUpdateDto, Company>();
+                CreateMap<OrderForCreationDto, Order>();
+                CreateMap<ContentOfOrderDto, ContentOfOrder>();
+                CreateMap<EmployeeForUpdateDto, Employees>().ReverseMap();
+                CreateMap<CompanyForUpdateDto, Company>().ReverseMap();
+                CreateMap<ContentOfOrderForUpdateDto, ContentOfOrder>().ReverseMap();
+                CreateMap<OrderForUpdateDto, Order>().ReverseMap();
+>>>>>>> lab6
             }
         }
     }

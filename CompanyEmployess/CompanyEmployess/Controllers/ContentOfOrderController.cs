@@ -5,6 +5,10 @@ using LoggerService;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using Entities.Models;
+<<<<<<< HEAD
+=======
+using Microsoft.AspNetCore.JsonPatch;
+>>>>>>> lab6
 
 namespace CompanyEmployees.Controllers
 {
@@ -80,6 +84,62 @@ namespace CompanyEmployees.Controllers
                 id = contentOfOrderToReturn.OrderId
             }, contentOfOrderToReturn);
         }
+<<<<<<< HEAD
+=======
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateContentOfOrderForOrder(Guid orderyId, Guid id, [FromBody] ContentOfOrderForUpdateDto contentOfOrder)
+        {
+            if (contentOfOrder == null)
+            {
+                _logger.LogError("contentOfOrder object sent from client is null.");
+            return BadRequest("contentOfOrder object is null");
+            }
+            var order = _repository.Order.GetOrder(orderyId, trackChanges: false);
+            if (order == null)
+            {
+                _logger.LogInfo($"order with id: {orderyId} doesn't exist in the database.");
+            return NotFound();
+            }
+            var contentOfOrderEntity = _repository.ContentOfOrder.GetContentOfOrder(orderyId, id, trackChanges:
+            true);
+            if (contentOfOrderEntity == null)
+            {
+                _logger.LogInfo($"Content Of Order with id: {id} doesn't exist in the database.");
+            return NotFound();
+            }
+            _mapper.Map(order, contentOfOrderEntity);
+            _repository.Save();
+            return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        public IActionResult PartiallyUpdateContentOfOrderForOrder(Guid orderId, Guid id, [FromBody] JsonPatchDocument<ContentOfOrderForUpdateDto> patchDoc)
+        {
+            if (patchDoc == null)
+            {
+                _logger.LogError("patchDoc object sent from client is null.");
+                return BadRequest("patchDoc object is null");
+            }
+            var order = _repository.Order.GetOrder(orderId, trackChanges: false);
+            if (order == null)
+            {
+                _logger.LogInfo($"order with id: {orderId} doesn't exist in the database.");
+                return NotFound();
+            }
+            var contentOfOrderEntity = _repository.ContentOfOrder.GetContentOfOrder(orderId, id,trackChanges: true);
+            if (contentOfOrderEntity == null)
+            {
+                _logger.LogInfo($"contentOfOrder with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+            var contentOfOrderToPatch = _mapper.Map<ContentOfOrderForUpdateDto>(contentOfOrderEntity);
+            patchDoc.ApplyTo(contentOfOrderToPatch);
+            _mapper.Map(contentOfOrderToPatch, contentOfOrderEntity);
+            _repository.Save();
+            return NoContent();
+        }
+>>>>>>> lab6
     }
     
 }

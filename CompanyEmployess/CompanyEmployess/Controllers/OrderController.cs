@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 <<<<<<< HEAD
+<<<<<<< HEAD
 using Contracts;
 using Entities.DataTransferObjects;
 using LoggerService;
@@ -18,6 +19,8 @@ namespace CompanyEmployees.Controllers
     [Route("api/order")]
 >>>>>>> lab4
 =======
+=======
+>>>>>>> lab6
 using CompanyEmployees.ModelBinders;
 using Contracts;
 using Entities.DataTransferObjects;
@@ -31,7 +34,10 @@ using System.Linq;
 namespace CompanyEmployees.Controllers
 {
     [Route("api/order")]
+<<<<<<< HEAD
 >>>>>>> lab5
+=======
+>>>>>>> lab6
     [ApiController]
     public class OrderController : ControllerBase
     {
@@ -46,15 +52,20 @@ namespace CompanyEmployees.Controllers
         }
         [HttpGet]
 <<<<<<< HEAD
+<<<<<<< HEAD
         public IActionResult GetOrder()
 =======
         public IActionResult GetOrders()
 >>>>>>> lab5
+=======
+        public IActionResult GetOrders()
+>>>>>>> lab6
         {
             var orders = _repository.Order.GetAllOrder(trackChanges: false);
             var ordersDto = _mapper.Map<IEnumerable<OrderDto>>(orders);
             return Ok(ordersDto);
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -64,6 +75,10 @@ namespace CompanyEmployees.Controllers
 
         [HttpGet("{id}", Name = "OrderById")]
 >>>>>>> lab5
+=======
+
+        [HttpGet("{id}", Name = "OrderById")]
+>>>>>>> lab6
         public IActionResult GetOrder(Guid id)
         {
             var order = _repository.Order.GetOrder(id, trackChanges: false);
@@ -78,9 +93,12 @@ namespace CompanyEmployees.Controllers
                 return Ok(orderDto);
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
         }
 >>>>>>> lab4
 =======
+=======
+>>>>>>> lab6
 
         }
 
@@ -136,6 +154,29 @@ namespace CompanyEmployees.Controllers
             return CreatedAtRoute("OrderCollection", new { ids },
             orderCollectionToReturn);
         }
+<<<<<<< HEAD
 >>>>>>> lab5
+=======
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateOrder(Guid id, [FromBody] OrderForUpdateDto order)
+        {
+            if (order == null)
+            {
+                
+            _logger.LogError("OrderForUpdateDto object sent from client is null.");
+                return BadRequest("OrderForUpdateDto object is null");
+            }
+            var orderEntity = _repository.Order.GetOrder(id, trackChanges: true);
+            if (orderEntity == null)
+            {
+                _logger.LogInfo($"Order with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+            _mapper.Map(order, orderEntity);
+            _repository.Save();
+            return NoContent();
+        }
+>>>>>>> lab6
     }
 }

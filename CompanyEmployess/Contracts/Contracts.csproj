@@ -17,11 +17,14 @@
     </PackageReference>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 =======
 >>>>>>> lab4
 =======
 >>>>>>> lab5
+=======
+>>>>>>> lab6
   </ItemGroup>
 
   <ItemGroup>

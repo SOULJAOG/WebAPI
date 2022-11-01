@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿using Contracts;
 =======
 ﻿using CompanyEmployees;
@@ -9,6 +10,10 @@ using Contracts;
 ﻿using CompanyEmployees;
 using Contracts;
 >>>>>>> lab5
+=======
+﻿using CompanyEmployees;
+using Contracts;
+>>>>>>> lab6
 using Entities;
 using LoggerService;
 using Microsoft.AspNetCore.Builder;
@@ -49,6 +54,7 @@ namespace CompanyEmployess.Extensions
         services.AddScoped<IRepositoryManager, RepositoryManager>();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
         public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) =>
@@ -59,5 +65,10 @@ namespace CompanyEmployess.Extensions
         public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) =>
          builder.AddMvcOptions(config => config.OutputFormatters.Add(new CsvOutputFormatter()));
 >>>>>>> lab5
+=======
+
+        public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) =>
+         builder.AddMvcOptions(config => config.OutputFormatters.Add(new CsvOutputFormatter()));
+>>>>>>> lab6
     }
 }

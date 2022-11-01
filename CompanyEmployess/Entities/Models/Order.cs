@@ -14,6 +14,7 @@ namespace Entities.Models
         public Guid Id { get; set; }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   
 =======
        
@@ -21,6 +22,9 @@ namespace Entities.Models
 =======
 
 >>>>>>> lab5
+=======
+
+>>>>>>> lab6
         public string CustomerName { get; set; }
         public string Phone { get; set; }
         public DateTime DateOfDelivery { get; set; }
