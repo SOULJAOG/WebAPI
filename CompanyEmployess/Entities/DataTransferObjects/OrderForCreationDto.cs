@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities.DataTransferObjects
 {
-    public class OrderDto
+    public class OrderForCreationDto
     {    
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
@@ -15,11 +15,5 @@ namespace Entities.DataTransferObjects
         public string Phone { get; set; }
         public DateTime DateOfDelivery { get; set; }
         public DateTime DateOfIssue { get; set; }
-<<<<<<< HEAD
-=======
-
-        public IEnumerable<ContentOfOrderForCreationDto> ContentOfOrder { get; set; }
-
->>>>>>> lab5
     }
 }

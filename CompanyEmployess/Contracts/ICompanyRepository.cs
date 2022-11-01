@@ -10,10 +10,21 @@ namespace Contracts
     public interface ICompanyRepository
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
        
 >>>>>>> lab4
         IEnumerable<Company> GetAllCompanies(bool trackChanges);
         Company GetCompany(Guid companyId, bool trackChanges);
+=======
+       
+        IEnumerable<Company> GetAllCompanies(bool trackChanges);
+        Company GetCompany(Guid companyId, bool trackChanges);
+
+        void CreateCompany(Company company);
+
+        IEnumerable<Company> GetByIds(IEnumerable<Guid> ids, bool trackChanges);
+
+>>>>>>> lab5
     }
 }

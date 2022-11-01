@@ -14,9 +14,12 @@ namespace Repository
         private ICompanyRepository _companyRepository;
         private IEmployeeRepository _employeeRepository;
 <<<<<<< HEAD
+<<<<<<< HEAD
         private IUserRepository _userRepository;
 =======
 >>>>>>> lab4
+=======
+>>>>>>> lab5
         private IOrderRepository _orderRepository;
         private IContentOfOrderRepository _contentOfOrderRepository;
 
@@ -46,9 +49,13 @@ namespace Repository
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> lab4
+=======
+
+>>>>>>> lab5
         public IOrderRepository Order
         {
             get

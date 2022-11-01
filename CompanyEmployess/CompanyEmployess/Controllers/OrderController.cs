@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+<<<<<<< HEAD
 using Contracts;
 using Entities.DataTransferObjects;
 using LoggerService;
@@ -16,6 +17,21 @@ namespace CompanyEmployees.Controllers
 =======
     [Route("api/order")]
 >>>>>>> lab4
+=======
+using CompanyEmployees.ModelBinders;
+using Contracts;
+using Entities.DataTransferObjects;
+using Entities.Models;
+using LoggerService;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CompanyEmployees.Controllers
+{
+    [Route("api/order")]
+>>>>>>> lab5
     [ApiController]
     public class OrderController : ControllerBase
     {
@@ -29,16 +45,25 @@ namespace CompanyEmployees.Controllers
             _mapper = mapper;
         }
         [HttpGet]
+<<<<<<< HEAD
         public IActionResult GetOrder()
+=======
+        public IActionResult GetOrders()
+>>>>>>> lab5
         {
             var orders = _repository.Order.GetAllOrder(trackChanges: false);
             var ordersDto = _mapper.Map<IEnumerable<OrderDto>>(orders);
             return Ok(ordersDto);
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
         [HttpGet("{id}")]
+=======
+
+        [HttpGet("{id}", Name = "OrderById")]
+>>>>>>> lab5
         public IActionResult GetOrder(Guid id)
         {
             var order = _repository.Order.GetOrder(id, trackChanges: false);
@@ -52,7 +77,65 @@ namespace CompanyEmployees.Controllers
                 var orderDto = _mapper.Map<OrderDto>(order);
                 return Ok(orderDto);
             }
+<<<<<<< HEAD
         }
 >>>>>>> lab4
+=======
+
+        }
+
+        [HttpPost]
+        public IActionResult CreateOrder([FromBody] OrderForCreationDto orderForCreation)
+        {
+            if (orderForCreation == null)
+            {
+                _logger.LogError("OrderForCreation object sent from client is null.");
+                return BadRequest("OrderForCreation object is null");
+            }
+            var orderEntity = _mapper.Map<Order>(orderForCreation);
+            _repository.Order.CreateOrder(orderEntity);
+            _repository.Save();
+            var orderToReturn = _mapper.Map<OrderDto>(orderEntity);
+            return CreatedAtRoute("Order Dto", new { id = orderToReturn.Id }, orderToReturn);
+        }
+
+        [HttpGet("collection/({ids})", Name = "OrderCollection")]
+        public IActionResult GetCompanyCollection([ModelBinder(BinderType =typeof(ArrayModelBinder))] IEnumerable<Guid> ids)
+        {
+            if (ids == null)
+            {
+                _logger.LogError("Parameter ids is null");
+                return BadRequest("Parameter ids is null");
+            }
+            var orderEntities = _repository.Order.GetByIds(ids, trackChanges: false);
+            if (ids.Count() != orderEntities.Count())
+            {
+                _logger.LogError("Some ids are not valid in a collection");
+                return NotFound();
+            }
+            var orderToReturn = _mapper.Map<IEnumerable<OrderDto>>(orderEntities);
+            return Ok(orderToReturn);
+        }
+
+        [HttpPost("collection")]
+        public IActionResult CreateOrderCollection([FromBody] IEnumerable<OrderForCreationDto> orderCollection)
+        {
+            if (orderCollection == null)
+            {
+                _logger.LogError("Order collection sent from client is null.");
+                return BadRequest("Order collection is null");
+            }
+            var orderEntities = _mapper.Map<IEnumerable<Order>>(orderCollection);
+            foreach (var orderz in orderEntities)
+            {
+                _repository.Order.CreateOrder(orderz);
+            }
+            _repository.Save();
+            var orderCollectionToReturn = _mapper.Map<IEnumerable<OrderDto>>(orderEntities);
+            var ids = string.Join(",", orderCollectionToReturn.Select(c => c.Id));
+            return CreatedAtRoute("OrderCollection", new { ids },
+            orderCollectionToReturn);
+        }
+>>>>>>> lab5
     }
 }

@@ -6,15 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entities.DataTransferObjects
 {
-    public class ContentOfOrderDto
+    public class ContentOfOrderForCreationDto
     {
-<<<<<<< HEAD
  
-        public Guid OwnerId { get; set; }
-=======
->>>>>>> lab5
-        public Guid OrderId { get; set; }
-
         public string Product { get; set; }
         public string Price { get; set; }
         public string Quantity { get; set; }

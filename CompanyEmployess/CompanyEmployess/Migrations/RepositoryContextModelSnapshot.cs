@@ -202,11 +202,17 @@ namespace CompanyEmployess.Migrations
                         .HasColumnType("nvarchar(max)");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
 >>>>>>> lab4
+=======
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+>>>>>>> lab5
                     b.HasKey("Id");
 
                     b.ToTable("Order");
@@ -219,11 +225,16 @@ namespace CompanyEmployess.Migrations
                             DateOfDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfIssue = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
 <<<<<<< HEAD
+<<<<<<< HEAD
                             Phone = "89278976365"
 =======
                             Phone = "89278976365",
                             UserId = new Guid("80abbca8-664d-4b20-b5de-024715497d4a")
 >>>>>>> lab4
+=======
+                            Phone = "89278976365",
+                            UserId = new Guid("80abbca8-664d-4b20-b5de-024715497d4a")
+>>>>>>> lab5
                         },
                         new
                         {
@@ -232,11 +243,16 @@ namespace CompanyEmployess.Migrations
                             DateOfDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfIssue = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
 <<<<<<< HEAD
+<<<<<<< HEAD
                             Phone = "89278876365"
 =======
                             Phone = "89278876365",
                             UserId = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a")
 >>>>>>> lab4
+=======
+                            Phone = "89278876365",
+                            UserId = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a")
+>>>>>>> lab5
                         },
                         new
                         {
@@ -245,8 +261,11 @@ namespace CompanyEmployess.Migrations
                             DateOfDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfIssue = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
 <<<<<<< HEAD
+<<<<<<< HEAD
                             Phone = "89278876345"
 =======
+=======
+>>>>>>> lab5
                             Phone = "89278876345",
                             UserId = new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811")
                         });
@@ -285,7 +304,10 @@ namespace CompanyEmployess.Migrations
                         {
                             Id = new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811"),
                             Mail = "oneill@gmail.com"
+<<<<<<< HEAD
 >>>>>>> lab4
+=======
+>>>>>>> lab5
                         });
                 });
 

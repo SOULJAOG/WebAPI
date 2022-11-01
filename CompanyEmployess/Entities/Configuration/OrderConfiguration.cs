@@ -19,10 +19,14 @@ namespace Entities.Configuration
             new Order
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 Id = new Guid("80abbca8-664d-4b20-b5de-024715497d4a"),          
 =======
                 Id = new Guid("80abbca8-664d-4b20-b5de-024715497d4a"),
 >>>>>>> lab4
+=======
+                Id = new Guid("80abbca8-664d-4b20-b5de-024715497d4a"),
+>>>>>>> lab5
                 CustomerName = "Raiden",
                 Phone = "89278976365",
                 DateOfDelivery = new DateTime(),
