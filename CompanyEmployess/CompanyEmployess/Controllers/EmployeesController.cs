@@ -1,27 +1,18 @@
 ﻿using AutoMapper;
 using Contracts;
 using Entities.DataTransferObjects;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-using Entities.Models;
->>>>>>> lab5
-using LoggerService;
-using Microsoft.AspNetCore.Mvc;
-using System;
-=======
 using Entities.Models;
 using LoggerService;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using Newtonsoft;
 using Microsoft.AspNetCore.JsonPatch;
->>>>>>> lab6
 
 namespace CompanyEmployees.Controllers
 {
     [Route("api/companies/{companyId}/employees")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v1")]
     public class EmployeesController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
@@ -34,15 +25,8 @@ namespace CompanyEmployees.Controllers
             _mapper = mapper;
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        [HttpGet("{id}")]
-=======
         [HttpGet("{id}", Name = "GetEmployeeForCompany")]
->>>>>>> lab5
-=======
-        [HttpGet("{id}", Name = "GetEmployeeForCompany")]
->>>>>>> lab6
+        [HttpHead]
         public IActionResult GetEmployeeForCompany(Guid companyId, Guid id)
         {
             var company = _repository.Company.GetCompany(companyId, trackChanges: false);
@@ -60,11 +44,6 @@ namespace CompanyEmployees.Controllers
             var employee = _mapper.Map<EmployeeDto>(employeeDb);
             return Ok(employee);
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> lab6
 
         [HttpPost]
         public IActionResult CreateEmployeeForCompany(Guid companyId, [FromBody] EmployeeForCreationDto employee)
@@ -88,9 +67,6 @@ namespace CompanyEmployees.Controllers
             {
                 companyId,id = employeeToReturn.Id}, employeeToReturn);
         }
-<<<<<<< HEAD
->>>>>>> lab5
-=======
 
         [HttpDelete("{id}")]
         public IActionResult DeleteEmployeeForCompany(Guid companyId, Guid id)
@@ -168,7 +144,6 @@ namespace CompanyEmployees.Controllers
             _repository.Save();
             return NoContent();
         }
->>>>>>> lab6
     }
     
 }

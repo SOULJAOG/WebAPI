@@ -1,44 +1,28 @@
 ﻿using AutoMapper;
-<<<<<<< HEAD
-<<<<<<< HEAD
-using Contracts;
-using Entities.DataTransferObjects;
-using LoggerService;
-using Microsoft.AspNetCore.Mvc;
-<<<<<<< HEAD
-=======
-using System;
->>>>>>> lab4
-using System.Collections.Generic;
-
-namespace CompanyEmployees.Controllers
-{
-<<<<<<< HEAD
-    [Route("api/[controller]")]
-=======
-    [Route("api/order")]
->>>>>>> lab4
-=======
-=======
->>>>>>> lab6
 using CompanyEmployees.ModelBinders;
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
 using LoggerService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Xml.Linq;
+
 
 namespace CompanyEmployees.Controllers
 {
+    /// <summary>
+    /// Контроллер отвечающий за взаимодействие с таблицей Order.
+    /// В ней он создаёт,добавляет,обновляет записи.
+    /// </summary>
+    [ApiVersion("1.0")]
     [Route("api/order")]
-<<<<<<< HEAD
->>>>>>> lab5
-=======
->>>>>>> lab6
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v1")]
     public class OrderController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
@@ -51,34 +35,16 @@ namespace CompanyEmployees.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-<<<<<<< HEAD
-<<<<<<< HEAD
-        public IActionResult GetOrder()
-=======
+        [HttpGet(Name = "GetOrders"), Authorize(Roles = "Manager")]
         public IActionResult GetOrders()
->>>>>>> lab5
-=======
-        public IActionResult GetOrders()
->>>>>>> lab6
         {
             var orders = _repository.Order.GetAllOrder(trackChanges: false);
             var ordersDto = _mapper.Map<IEnumerable<OrderDto>>(orders);
             return Ok(ordersDto);
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-        [HttpGet("{id}")]
-=======
 
         [HttpGet("{id}", Name = "OrderById")]
->>>>>>> lab5
-=======
-
-        [HttpGet("{id}", Name = "OrderById")]
->>>>>>> lab6
+        [HttpGet(Name = "GetOrder"), Authorize(Roles = "Manager")]
         public IActionResult GetOrder(Guid id)
         {
             var order = _repository.Order.GetOrder(id, trackChanges: false);
@@ -92,17 +58,10 @@ namespace CompanyEmployees.Controllers
                 var orderDto = _mapper.Map<OrderDto>(order);
                 return Ok(orderDto);
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
-        }
->>>>>>> lab4
-=======
-=======
->>>>>>> lab6
-
         }
 
         [HttpPost]
+        [HttpPost(Name = "CreateOrder"), Authorize(Roles = "Manager")]
         public IActionResult CreateOrder([FromBody] OrderForCreationDto orderForCreation)
         {
             if (orderForCreation == null)
@@ -118,6 +77,7 @@ namespace CompanyEmployees.Controllers
         }
 
         [HttpGet("collection/({ids})", Name = "OrderCollection")]
+        [HttpGet(Name = "GetCompanyColleciton"), Authorize(Roles = "Manager")]
         public IActionResult GetCompanyCollection([ModelBinder(BinderType =typeof(ArrayModelBinder))] IEnumerable<Guid> ids)
         {
             if (ids == null)
@@ -136,6 +96,7 @@ namespace CompanyEmployees.Controllers
         }
 
         [HttpPost("collection")]
+        [HttpPost(Name = "CreateOrderCollection"), Authorize(Roles = "Manager")]
         public IActionResult CreateOrderCollection([FromBody] IEnumerable<OrderForCreationDto> orderCollection)
         {
             if (orderCollection == null)
@@ -154,11 +115,9 @@ namespace CompanyEmployees.Controllers
             return CreatedAtRoute("OrderCollection", new { ids },
             orderCollectionToReturn);
         }
-<<<<<<< HEAD
->>>>>>> lab5
-=======
 
         [HttpPut("{id}")]
+        [HttpPut(Name = "UpdateOrder"), Authorize(Roles = "Manager")]
         public IActionResult UpdateOrder(Guid id, [FromBody] OrderForUpdateDto order)
         {
             if (order == null)
@@ -177,6 +136,5 @@ namespace CompanyEmployees.Controllers
             _repository.Save();
             return NoContent();
         }
->>>>>>> lab6
     }
 }

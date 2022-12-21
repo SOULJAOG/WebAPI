@@ -1,42 +1,25 @@
 ﻿using AutoMapper;
-<<<<<<< HEAD
-<<<<<<< HEAD
-using Contracts;
-using Entities.DataTransferObjects;
-=======
-=======
->>>>>>> lab6
 using CompanyEmployees.ModelBinders;
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
-<<<<<<< HEAD
->>>>>>> lab5
-=======
->>>>>>> lab6
 using LoggerService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-namespace CompanyEmployees.Controllers
-{
-    [Route("api/[controller]")]
-=======
-=======
->>>>>>> lab6
 using System.Linq;
 
 namespace CompanyEmployees.Controllers
 {
-    [Route("api/order")]
-<<<<<<< HEAD
->>>>>>> lab5
-=======
->>>>>>> lab6
+    /// <summary>
+    /// Контроллер отвечающий за взаимодействие с таблицей Company.
+    /// В ней он создаёт,добавляет,обновляет записи.
+    /// </summary>
+    [ApiVersion("1.0")]
+    [Route("api/companies")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v1")]
     public class CompaniesController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
@@ -48,30 +31,25 @@ namespace CompanyEmployees.Controllers
             _logger = logger;
             _mapper = mapper;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-        [HttpGet]
-        public IActionResult GetCompanies()
+
+        [HttpOptions]
+        public IActionResult GetCompaniesOptions()
         {
-                var companies = _repository.Company.GetAllCompanies(trackChanges: false);
-                var companiesDto = _mapper.Map<IEnumerable<CompanyDto>>(companies);
-                return Ok(companiesDto);
-=======
-=======
->>>>>>> lab6
+            Response.Headers.Add("Allow", "GET, OPTIONS, POST");
+            return Ok();
+        }
+
         [HttpGet("{id}", Name = "CompanyById")]
+        [HttpGet(Name = "GetCompanies"), Authorize(Roles = "Manager")]
         public IActionResult GetCompanies()
         {
             var companies = _repository.Company.GetAllCompanies(trackChanges: false);
             var companiesDto = _mapper.Map<IEnumerable<CompanyDto>>(companies);
             return Ok(companiesDto);
-<<<<<<< HEAD
->>>>>>> lab5
-=======
->>>>>>> lab6
         }
 
         [HttpGet("{id}")]
+        [HttpGet(Name = "GetCompanie"), Authorize(Roles = "Manager")]
         public IActionResult GetCompany(Guid id)
         {
             var company = _repository.Company.GetCompany(id, trackChanges: false);
@@ -86,14 +64,10 @@ namespace CompanyEmployees.Controllers
                 return Ok(companyDto);
             }
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> lab6
 
 
         [HttpPost]
+        [HttpPost(Name = "CreateCompany"), Authorize(Roles = "Manager")]
         public IActionResult CreateCompany([FromBody] CompanyForCreationDto company)
         {
             if (company == null)
@@ -110,6 +84,7 @@ namespace CompanyEmployees.Controllers
         }
 
         [HttpGet("collection/({ids})", Name = "CompanyCollection")]
+        [HttpGet(Name = "GetCompaniCollection"), Authorize(Roles = "Manager")]
         public IActionResult GetCompanyCollection([ModelBinder(BinderType =typeof(ArrayModelBinder))] IEnumerable<Guid> ids)
         {
             if (ids == null)
@@ -128,6 +103,7 @@ namespace CompanyEmployees.Controllers
         }
 
         [HttpPost("collection")]
+        [HttpPost(Name = "CreateCompanyCollection"), Authorize(Roles = "Manager")]
         public IActionResult CreateCompanyCollection([FromBody]IEnumerable<CompanyForCreationDto> companyCollection)
         {
             if (companyCollection == null)
@@ -147,11 +123,9 @@ namespace CompanyEmployees.Controllers
             return CreatedAtRoute("CompanyCollection", new { ids },
             companyCollectionToReturn);
         }
-<<<<<<< HEAD
->>>>>>> lab5
-=======
 
         [HttpDelete("{id}")]
+        [HttpDelete(Name = "DeleteCompany"), Authorize(Roles = "Manager")]
         public IActionResult DeleteCompany(Guid id)
         {
             var company = _repository.Company.GetCompany(id, trackChanges: false);
@@ -166,6 +140,7 @@ namespace CompanyEmployees.Controllers
         }
 
         [HttpPut("{id}")]
+        [HttpPut(Name = "UpdateCompany"), Authorize(Roles = "Manager")]
         public IActionResult UpdateCompany(Guid id, [FromBody] CompanyForUpdateDto company)
         {
             if (company == null)
@@ -183,6 +158,5 @@ namespace CompanyEmployees.Controllers
             _repository.Save();
             return NoContent();
         }
->>>>>>> lab6
     }
 }
