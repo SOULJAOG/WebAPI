@@ -8,11 +8,6 @@ namespace Entities.DataTransferObjects
 {
     public class OrderForCreationDto
     {    
-<<<<<<< HEAD
-        public Guid Id { get; set; }
-        public Guid UserId { get; set; }
-=======
->>>>>>> lab6
 
         public string CustomerName { get; set; }
         public string Phone { get; set; }

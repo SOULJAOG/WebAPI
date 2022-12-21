@@ -12,19 +12,7 @@ namespace Entities.Models
     {
         [Column("OrderId")]
         public Guid Id { get; set; }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  
-=======
-       
->>>>>>> lab4
-=======
 
->>>>>>> lab5
-=======
-
->>>>>>> lab6
         public string CustomerName { get; set; }
         public string Phone { get; set; }
         public DateTime DateOfDelivery { get; set; }

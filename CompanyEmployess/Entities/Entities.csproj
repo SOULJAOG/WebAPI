@@ -1,16 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-=======
-<Project Sdk="Microsoft.NET.Sdk">
->>>>>>> lab4
-=======
-﻿<Project Sdk="Microsoft.NET.Sdk">
->>>>>>> lab5
-=======
-﻿<Project Sdk="Microsoft.NET.Sdk">
->>>>>>> lab6
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -23,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.8">
       <PrivateAssets>all</PrivateAssets>

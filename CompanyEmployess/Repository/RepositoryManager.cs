@@ -13,16 +13,6 @@ namespace Repository
         private RepositoryContext _repositoryContext;
         private ICompanyRepository _companyRepository;
         private IEmployeeRepository _employeeRepository;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        private IUserRepository _userRepository;
-=======
->>>>>>> lab4
-=======
->>>>>>> lab5
-=======
->>>>>>> lab6
         private IOrderRepository _orderRepository;
         private IContentOfOrderRepository _contentOfOrderRepository;
 
@@ -51,18 +41,7 @@ namespace Repository
             }
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> lab4
-=======
-
->>>>>>> lab5
-=======
-
->>>>>>> lab6
         public IOrderRepository Order
         {
             get
