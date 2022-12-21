@@ -29,8 +29,21 @@ namespace CompanyEmployess.Controllers
             _authManager = authManager; 
         }
 
-            [HttpPost]
-        [ServiceFilter(typeof(ValidationFilterAttribute))]// FIX FIX FIX 
+        [HttpPost("login")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<IActionResult> Authenticate([FromBody] UserForAuthenticationDto user)
+        {
+            if (!await _authManager.ValidateUser(user))
+            {
+                _logger.LogWarn($"{nameof(Authenticate)}: Authentication failed. Wrong user name or password.");
+                return Unauthorized();
+            }
+
+            return Ok(new { Token = await _authManager.CreateToken() });
+        }
+
+        [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> RegisterUser([FromBody] UserForRegistrationDto userForRegistration)
         {
             var user = _mapper.Map<User>(userForRegistration);
