@@ -1,26 +1,4 @@
 ﻿using AutoMapper;
-<<<<<<< HEAD
-<<<<<<< HEAD
-using Contracts;
-using Entities.DataTransferObjects;
-using LoggerService;
-using Microsoft.AspNetCore.Mvc;
-<<<<<<< HEAD
-=======
-using System;
->>>>>>> lab4
-using System.Collections.Generic;
-
-namespace CompanyEmployees.Controllers
-{
-<<<<<<< HEAD
-    [Route("api/[controller]")]
-=======
-    [Route("api/order")]
->>>>>>> lab4
-=======
-=======
->>>>>>> lab6
 using CompanyEmployees.ModelBinders;
 using Contracts;
 using Entities.DataTransferObjects;
@@ -33,11 +11,8 @@ using System.Linq;
 
 namespace CompanyEmployees.Controllers
 {
+    [ApiVersion("1.0")]
     [Route("api/order")]
-<<<<<<< HEAD
->>>>>>> lab5
-=======
->>>>>>> lab6
     [ApiController]
     public class OrderController : ControllerBase
     {
@@ -51,34 +26,14 @@ namespace CompanyEmployees.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-<<<<<<< HEAD
-<<<<<<< HEAD
-        public IActionResult GetOrder()
-=======
         public IActionResult GetOrders()
->>>>>>> lab5
-=======
-        public IActionResult GetOrders()
->>>>>>> lab6
         {
             var orders = _repository.Order.GetAllOrder(trackChanges: false);
             var ordersDto = _mapper.Map<IEnumerable<OrderDto>>(orders);
             return Ok(ordersDto);
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-        [HttpGet("{id}")]
-=======
 
         [HttpGet("{id}", Name = "OrderById")]
->>>>>>> lab5
-=======
-
-        [HttpGet("{id}", Name = "OrderById")]
->>>>>>> lab6
         public IActionResult GetOrder(Guid id)
         {
             var order = _repository.Order.GetOrder(id, trackChanges: false);
@@ -92,13 +47,6 @@ namespace CompanyEmployees.Controllers
                 var orderDto = _mapper.Map<OrderDto>(order);
                 return Ok(orderDto);
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
-        }
->>>>>>> lab4
-=======
-=======
->>>>>>> lab6
 
         }
 
@@ -154,9 +102,6 @@ namespace CompanyEmployees.Controllers
             return CreatedAtRoute("OrderCollection", new { ids },
             orderCollectionToReturn);
         }
-<<<<<<< HEAD
->>>>>>> lab5
-=======
 
         [HttpPut("{id}")]
         public IActionResult UpdateOrder(Guid id, [FromBody] OrderForUpdateDto order)
@@ -177,6 +122,5 @@ namespace CompanyEmployees.Controllers
             _repository.Save();
             return NoContent();
         }
->>>>>>> lab6
     }
 }

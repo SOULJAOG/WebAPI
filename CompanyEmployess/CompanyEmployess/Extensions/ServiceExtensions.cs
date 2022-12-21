@@ -1,22 +1,11 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-﻿using Contracts;
-=======
 ﻿using CompanyEmployees;
+using CompanyEmployees.Controllers;
 using Contracts;
->>>>>>> lab4
-=======
-﻿using CompanyEmployees;
-using Contracts;
->>>>>>> lab5
-=======
-﻿using CompanyEmployees;
-using Contracts;
->>>>>>> lab6
 using Entities;
 using LoggerService;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -50,25 +39,25 @@ namespace CompanyEmployess.Extensions
             services.AddDbContext<RepositoryContext>(opts => 
                 opts.UseSqlServer(configuration.GetConnectionString("sqlConnection"), b => b.MigrationsAssembly("CompanyEmployess")));
 
+        public static void ConfigureVersioning(this IServiceCollection services)
+        {
+            services.AddApiVersioning(opt =>
+            {
+                opt.ReportApiVersions = true;
+                opt.AssumeDefaultVersionWhenUnspecified = true;
+                opt.DefaultApiVersion = new ApiVersion(1, 0);
+                opt.ApiVersionReader = new HeaderApiVersionReader("api-version");
+                opt.Conventions.Controller<CompaniesController>().HasApiVersion(new ApiVersion(1, 0));
+                opt.Conventions.Controller<OrderController>().HasApiVersion(new ApiVersion(1, 0));
+            });
+        }
+
+
+
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
         services.AddScoped<IRepositoryManager, RepositoryManager>();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
         public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) =>
          builder.AddMvcOptions(config => config.OutputFormatters.Add(new CsvOutputFormatter()));
->>>>>>> lab4
-=======
-
-        public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) =>
-         builder.AddMvcOptions(config => config.OutputFormatters.Add(new CsvOutputFormatter()));
->>>>>>> lab5
-=======
-
-        public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) =>
-         builder.AddMvcOptions(config => config.OutputFormatters.Add(new CsvOutputFormatter()));
->>>>>>> lab6
     }
 }

@@ -1,41 +1,18 @@
 ﻿using AutoMapper;
-<<<<<<< HEAD
-<<<<<<< HEAD
-using Contracts;
-using Entities.DataTransferObjects;
-=======
-=======
->>>>>>> lab6
 using CompanyEmployees.ModelBinders;
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
-<<<<<<< HEAD
->>>>>>> lab5
-=======
->>>>>>> lab6
 using LoggerService;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-namespace CompanyEmployees.Controllers
-{
-    [Route("api/[controller]")]
-=======
-=======
->>>>>>> lab6
 using System.Linq;
 
 namespace CompanyEmployees.Controllers
 {
-    [Route("api/order")]
-<<<<<<< HEAD
->>>>>>> lab5
-=======
->>>>>>> lab6
+    [ApiVersion("1.0")]
+    [Route("api/companies")]
     [ApiController]
     public class CompaniesController : ControllerBase
     {
@@ -48,27 +25,20 @@ namespace CompanyEmployees.Controllers
             _logger = logger;
             _mapper = mapper;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-        [HttpGet]
-        public IActionResult GetCompanies()
+
+        [HttpOptions]
+        public IActionResult GetCompaniesOptions()
         {
-                var companies = _repository.Company.GetAllCompanies(trackChanges: false);
-                var companiesDto = _mapper.Map<IEnumerable<CompanyDto>>(companies);
-                return Ok(companiesDto);
-=======
-=======
->>>>>>> lab6
+            Response.Headers.Add("Allow", "GET, OPTIONS, POST");
+            return Ok();
+        }
+
         [HttpGet("{id}", Name = "CompanyById")]
         public IActionResult GetCompanies()
         {
             var companies = _repository.Company.GetAllCompanies(trackChanges: false);
             var companiesDto = _mapper.Map<IEnumerable<CompanyDto>>(companies);
             return Ok(companiesDto);
-<<<<<<< HEAD
->>>>>>> lab5
-=======
->>>>>>> lab6
         }
 
         [HttpGet("{id}")]
@@ -86,11 +56,6 @@ namespace CompanyEmployees.Controllers
                 return Ok(companyDto);
             }
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> lab6
 
 
         [HttpPost]
@@ -147,9 +112,6 @@ namespace CompanyEmployees.Controllers
             return CreatedAtRoute("CompanyCollection", new { ids },
             companyCollectionToReturn);
         }
-<<<<<<< HEAD
->>>>>>> lab5
-=======
 
         [HttpDelete("{id}")]
         public IActionResult DeleteCompany(Guid id)
@@ -183,6 +145,5 @@ namespace CompanyEmployees.Controllers
             _repository.Save();
             return NoContent();
         }
->>>>>>> lab6
     }
 }

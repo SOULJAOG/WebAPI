@@ -5,10 +5,7 @@ using LoggerService;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using Entities.Models;
-<<<<<<< HEAD
-=======
 using Microsoft.AspNetCore.JsonPatch;
->>>>>>> lab6
 
 namespace CompanyEmployees.Controllers
 {
@@ -27,6 +24,7 @@ namespace CompanyEmployees.Controllers
         }
 
         [HttpGet("{id}", Name = "GetContentOfOrderDto")]
+        [HttpHead]
         public IActionResult GetContentOfOrderFoOrder(Guid orderId, Guid id)
         {
             var company = _repository.Order.GetOrder(orderId, trackChanges: false);
@@ -84,8 +82,6 @@ namespace CompanyEmployees.Controllers
                 id = contentOfOrderToReturn.OrderId
             }, contentOfOrderToReturn);
         }
-<<<<<<< HEAD
-=======
 
         [HttpPut("{id}")]
         public IActionResult UpdateContentOfOrderForOrder(Guid orderyId, Guid id, [FromBody] ContentOfOrderForUpdateDto contentOfOrder)
@@ -139,7 +135,6 @@ namespace CompanyEmployees.Controllers
             _repository.Save();
             return NoContent();
         }
->>>>>>> lab6
     }
     
 }
