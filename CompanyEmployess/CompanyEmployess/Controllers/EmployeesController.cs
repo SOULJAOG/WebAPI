@@ -25,6 +25,10 @@ namespace CompanyEmployees.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Получает список всех сатрудников компании
+        /// </summary>
+        /// <returns> Список сотрудников</returns>.
         [HttpGet("{id}", Name = "GetEmployeeForCompany")]
         [HttpHead]
         public IActionResult GetEmployeeForCompany(Guid companyId, Guid id)
@@ -45,6 +49,14 @@ namespace CompanyEmployees.Controllers
             return Ok(employee);
         }
 
+        /// <summary>
+        /// Создает вновь созданного работника
+        /// </summary>
+        /// <param name="employee"></param>.
+        /// <returns>Вновь созданный работник</returns>.
+        /// <response code="201"> Возвращает только что созданный элемент</response>.
+        /// <response code="400"> Если элемент равен null</response>.
+        /// <код ответа="422"> Если модель недействительна</ответ>.
         [HttpPost]
         public IActionResult CreateEmployeeForCompany(Guid companyId, [FromBody] EmployeeForCreationDto employee)
         {

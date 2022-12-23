@@ -12,6 +12,9 @@ using System.Net.Http;
 
 namespace CompanyEmployess.Controllers
 {
+    /// <summary>
+    /// Контроллер отвечающий за авторизацию пользователя.
+    /// </summary>
     [Route("api/authentication")]
     [ApiController]
     public class AuthenticationController : ControllerBase
@@ -29,8 +32,14 @@ namespace CompanyEmployess.Controllers
             _authManager = authManager; 
         }
 
-            [HttpPost]
-        [ServiceFilter(typeof(ValidationFilterAttribute))]// FIX FIX FIX 
+        /// <summary>
+        /// Регистрирует нового пользователя
+        /// </summary>
+        /// <param name="user("></param>.
+        /// <returns>Вновь созданный пользователь</returns>.
+        /// <response code="201"> Возвращает только что созданный элемент</response>.
+        [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> RegisterUser([FromBody] UserForRegistrationDto userForRegistration)
         {
             var user = _mapper.Map<User>(userForRegistration);

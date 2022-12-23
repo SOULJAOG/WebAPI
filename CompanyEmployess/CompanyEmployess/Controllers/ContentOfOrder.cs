@@ -9,6 +9,7 @@ namespace CompanyEmployees.Controllers
 {
     [Route("api/Order/{orderId}/contentOfOrder")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v2")]
     public class ContentOfOrder : ControllerBase
     {
         private readonly IRepositoryManager _repository;
@@ -21,6 +22,10 @@ namespace CompanyEmployees.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Получает список всего контента заказа
+        /// </summary>
+        /// <returns> Список контента</returns>.
         [HttpGet("{id}")]
         public IActionResult GetContentOfOrderFoOrder(Guid orderId, Guid id)
         {

@@ -34,6 +34,11 @@ namespace CompanyEmployees.Controllers
             _logger = logger;
             _mapper = mapper;
         }
+
+        /// <summary>
+        /// Получает список всех заказов
+        /// </summary>
+        /// <returns> Список заказов</returns>.
         [HttpGet]
         [HttpGet(Name = "GetOrders"), Authorize(Roles = "Manager")]
         public IActionResult GetOrders()
@@ -60,6 +65,14 @@ namespace CompanyEmployees.Controllers
             }
         }
 
+        /// <summary>
+        /// Создает вновь созданный заказ
+        /// </summary>
+        /// <param name="order"></param>.
+        /// <returns>Вновь созданный заказ</returns>.
+        /// <response code="201"> Возвращает только что созданный элемент</response>.
+        /// <response code="400"> Если элемент равен null</response>.
+        /// <код ответа="422"> Если модель недействительна</ответ>.
         [HttpPost]
         [HttpPost(Name = "CreateOrder"), Authorize(Roles = "Manager")]
         public IActionResult CreateOrder([FromBody] OrderForCreationDto orderForCreation)

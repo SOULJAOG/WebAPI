@@ -24,6 +24,10 @@ namespace CompanyEmployees.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Получает список всего контента заказа
+        /// </summary>
+        /// <returns> Список контента</returns>.
         [HttpGet("{id}", Name = "GetContentOfOrderDto")]
         [HttpHead]
         public IActionResult GetContentOfOrderFoOrder(Guid orderId, Guid id)
@@ -44,6 +48,14 @@ namespace CompanyEmployees.Controllers
             return Ok(employee);
         }
 
+        /// <summary>
+        /// Создает вновь созданный контент заказа
+        /// </summary>
+        /// <param name="contentOfOrderFor"></param>.
+        /// <returns>Вновь созданный контент заказа</returns>.
+        /// <response code="201"> Возвращает только что созданный элемент</response>.
+        /// <response code="400"> Если элемент равен null</response>.
+        /// <код ответа="422"> Если модель недействительна</ответ>.
         [HttpPost]
         public IActionResult CreateConentOfOrder([FromBody] ContentOfOrderForCreationDto contetnForCreation)
         {

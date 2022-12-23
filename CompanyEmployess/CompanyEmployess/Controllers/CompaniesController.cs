@@ -39,6 +39,10 @@ namespace CompanyEmployees.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Получает список всех компаний
+        /// </summary>
+        /// <returns> Список компаний</returns>.
         [HttpGet("{id}", Name = "CompanyById")]
         [HttpGet(Name = "GetCompanies"), Authorize(Roles = "Manager")]
         public IActionResult GetCompanies()
@@ -65,7 +69,14 @@ namespace CompanyEmployees.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Создает вновь созданную компанию
+        /// </summary>
+        /// <param name="company"></param>.
+        /// <returns>Вновь созданная компания</returns>.
+        /// <response code="201"> Возвращает только что созданный элемент</response>.
+        /// <response code="400"> Если элемент равен null</response>.
+        /// <код ответа="422"> Если модель недействительна</ответ>.
         [HttpPost]
         [HttpPost(Name = "CreateCompany"), Authorize(Roles = "Manager")]
         public IActionResult CreateCompany([FromBody] CompanyForCreationDto company)
